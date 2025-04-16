@@ -1,6 +1,6 @@
 ﻿namespace StudySync.Dtos
 {
-    public class CatgoryDTO
+    public class CategoryDTO
     {
     }
 }

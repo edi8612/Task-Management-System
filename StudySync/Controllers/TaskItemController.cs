@@ -21,7 +21,7 @@ namespace StudySync.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="Admin")]
+        // [Authorize(Roles ="Admin")]
         public async Task<ActionResult<IEnumerable<TaskItemDTO>>> GetTasks()
         {
             var tasks = await _taskService.GetAllTasksAsync();

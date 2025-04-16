@@ -62,6 +62,14 @@ public class TaskItemService : ITaskItemService
             throw new ArgumentException("Priority must be 'Low', 'Medium', or 'High'.");
         }
 
+
+        var user = await _userRepository.GetUserByIdAsync(taskCreateDto.UserId);
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"User with ID {taskCreateDto.UserId} not found.");
+        }
+
+
         var taskItem = _mapper.Map<TaskItem>(taskCreateDto);
 
         taskItem.IsCompleted = false; // Default to not completed

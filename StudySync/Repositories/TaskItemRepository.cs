@@ -33,6 +33,9 @@ namespace StudySync.Repositories
        
         public async Task AddTaskAsync(TaskItem task)
         {
+
+
+
             await _context.Tasks.AddAsync(task);
             await _context.SaveChangesAsync();
         }

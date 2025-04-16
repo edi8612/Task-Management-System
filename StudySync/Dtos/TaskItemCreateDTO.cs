@@ -21,7 +21,7 @@ namespace StudySync.Dtos
 
 
         //[Required(ErrorMessage = "User ID is required")]
-        //public int UserId { get; set; }
+        public int UserId { get; set; }
         //public bool IsCompleted { get; set; }
 
 
