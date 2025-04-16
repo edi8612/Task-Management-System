@@ -1,11 +1,12 @@
-﻿using StudySync.Models;
+﻿using StudySync.Dtos;
+using StudySync.Models;
 
 namespace StudySync.Services
 {
     public interface ICategoryService
     {
-        public Task<IEnumerable<Category>> GetAllCategoriesAsync();
-        public Task<Category?> GetCategoryByIdAsync(int id);
+        public Task<IEnumerable<CategoryDTO>> GetAllCategoriesAsync();
+        public Task<CategoryDTO?> GetCategoryByIdAsync(int id);
 
         public Task CreateCategoryAsync(Category category);
 

@@ -1,4 +1,6 @@
-﻿using StudySync.Models;
+﻿using AutoMapper;
+using StudySync.Dtos;
+using StudySync.Models;
 using StudySync.Repositories;
 
 namespace StudySync.Services
@@ -8,10 +10,13 @@ namespace StudySync.Services
 
         private readonly ICategoryRepository _categoryRepository;
         private readonly IUserRepository _userRepository; // Assuming you have a user repository
-        public CategoryService(ICategoryRepository categoryRepository, IUserRepository userRepository)
+        private readonly IMapper _mapper;
+        public CategoryService(ICategoryRepository categoryRepository, IUserRepository userRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _userRepository = userRepository;
+            _mapper = mapper;
+
         }
 
         public async Task CreateCategoryAsync(Category category)
@@ -25,9 +30,11 @@ namespace StudySync.Services
             await _categoryRepository.DeleteCategoryAsync(id);
         }
 
-        public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
+        public async Task<IEnumerable<CategoryDTO>> GetAllCategoriesAsync()
         {
-            return await _categoryRepository.GetAllCategoriesAsync();
+            var categories = await _categoryRepository.GetAllCategoriesAsync();
+
+            return _mapper.Map<IEnumerable<CategoryDTO>>(categories);
 
         }
 
@@ -38,9 +45,10 @@ namespace StudySync.Services
 
         }
 
-        public async Task<Category> GetCategoryByIdAsync(int id)
+        public async Task<CategoryDTO> GetCategoryByIdAsync(int id)
         {
-            return  await _categoryRepository.GetCategoryByIdAsync(id);
+            var category = await _categoryRepository.GetCategoryByIdAsync(id);
+            return _mapper.Map<CategoryDTO>(category);
         }
 
         public async Task UpdateCategoryAsync(Category category)
