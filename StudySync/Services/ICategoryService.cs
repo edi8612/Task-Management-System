@@ -1,19 +1,20 @@
-﻿using StudySync.Models;
+﻿using StudySync.Dtos;
+using StudySync.Models;
 
 namespace StudySync.Services
 {
     public interface ICategoryService
     {
-        public Task<IEnumerable<Category>> GetAllCategoriesAsync();
-        public Task<Category?> GetCategoryByIdAsync(int id);
+        public Task<IEnumerable<CategoryDTO>> GetAllCategoriesAsync();
+        public Task<CategoryDTO?> GetCategoryByIdAsync(int id);
 
-        public Task CreateCategoryAsync(Category category);
+        public Task CreateCategoryAsync(CategoryCreateDTO category);
 
         public Task UpdateCategoryAsync(Category category);
 
         public Task DeleteCategoryAsync(int id);
 
-        public Task<IEnumerable<Category>> GetCategoriesWithMinTasksAsync(int minTask);
+        public Task<IEnumerable<CategoryDTO>> GetCategoriesWithMinTasksAsync(int minTask);
 
 
 
