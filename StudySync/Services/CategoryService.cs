@@ -11,11 +11,19 @@ namespace StudySync.Services
         private readonly ICategoryRepository _categoryRepository;
         private readonly IUserRepository _userRepository; // Assuming you have a user repository
         private readonly IMapper _mapper;
+<<<<<<< HEAD
         public CategoryService(ICategoryRepository categoryRepository, IUserRepository userRepository,IMapper mapper)
+=======
+        public CategoryService(ICategoryRepository categoryRepository, IUserRepository userRepository, IMapper mapper)
+>>>>>>> 2f844f17d9af319df8d5f522749a05fd978618a5
         {
             _categoryRepository = categoryRepository;
             _userRepository = userRepository;
             _mapper = mapper;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2f844f17d9af319df8d5f522749a05fd978618a5
         }
 
         public async Task<CategoryDTO> CreateCategoryAsync(CategoryCreateDTO category)
@@ -60,7 +68,12 @@ namespace StudySync.Services
 
         public async Task<IEnumerable<CategoryDTO>> GetAllCategoriesAsync()
         {
+<<<<<<< HEAD
             var categories =  await _categoryRepository.GetAllCategoriesAsync();
+=======
+            var categories = await _categoryRepository.GetAllCategoriesAsync();
+
+>>>>>>> 2f844f17d9af319df8d5f522749a05fd978618a5
             return _mapper.Map<IEnumerable<CategoryDTO>>(categories);
 
         }
@@ -77,10 +90,13 @@ namespace StudySync.Services
         public async Task<CategoryDTO> GetCategoryByIdAsync(int id)
         {
             var category = await _categoryRepository.GetCategoryByIdAsync(id);
+<<<<<<< HEAD
             if (category == null)
             {
                 throw new KeyNotFoundException($"Category with ID {id} not found.");
             }
+=======
+>>>>>>> 2f844f17d9af319df8d5f522749a05fd978618a5
             return _mapper.Map<CategoryDTO>(category);
         }
 
